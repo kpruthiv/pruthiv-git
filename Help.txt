@@ -1,0 +1,35 @@
+Buzzer spr332v2
+0x51 0x00 --> DISABLE
+0x51 AnyValue --> Enable
+
+
+Buzzer spr332v2
+0x0f01 -- PPS disable
+
+
+96 FF : read the RF state ; 
+if return value is (00) then RF is ON
+if return value is (01) then RF is OFF
+
+96 00 : switch RF off
+96 01 : switch RF on 
+
+# - No carrier, RF is turned OFF
+2,0 FF92000000
+
+# - No sub-carrier, just carrier, RF is turned ON, Stop polling and just keep RF on
+2,0 FF92400000
+
+
+FF7004E604B0029600 - RF Off	
+FF7004E604B0029601 - RF On
+
+A3 01 : to read
+A2 <data> : to write  
+
+
+#define HID_CFG_UNINITIALIZED		0xFF
+#define HID_CFG_LF_UID_CSN_ONLY		0x03
+#define HID_CFG_LF_UID_FAC_ONLY		0x02
+#define HID_CFG_MEM_READING		0x01
+#define HID_CFG_UID_READING		0x00
